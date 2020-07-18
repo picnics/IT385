@@ -9,3 +9,5 @@ def func1():
 
 #Call Functions 
 func1()
+print(func1())
+print(func1)

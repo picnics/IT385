@@ -18,6 +18,14 @@ def power(num, power=2):#power inside parenthesis is squared
     result=result * num
   print(result)
 
+#variable number of parameters
+def multiAdd(*args):# takes all the parameters and adds them together
+  result = 0
+  for x in args:
+    result += x
+  return result
+#above is a loop
+
 #Call Functions 
 #func1()
 #print(func1())
@@ -27,10 +35,14 @@ def power(num, power=2):#power inside parenthesis is squared
 #addNums(val2 = 11, val1 = 9)
 #print(cube(5)) #value of the function that is being called
 
-power(6,6)
-power(6,2)
-power(6)
+#power(6,6)
+#power(6,2)
+#power(6)
 
+
+print(multiAdd(5, 6, 9, 15, 9))
+print(multiAdd())
+print(multiAdd(556, 443,223,554,1,3,23,99,100,200))
 #named arguments 
 #the only condition is you must stay with one or the other 
 #example is you would have to keep doing postitional or named after you start 

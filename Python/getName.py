@@ -3,9 +3,10 @@
 #logs into a remote system and runs the hostname command 
 
 import pexpect
-def getHostName(ipaddr):
+
+def getHostName(ipAddr):
   #open connection and login 
-  child = pexpect.spawn("ssh justincase@" + ipaddr)
+  child = pexpect.spawn("ssh justincase@" + ipAddr)
   child.expect("justincase@.* password:")
   child.sendline("Password01")
   print("logged into system")
@@ -20,4 +21,8 @@ def getHostName(ipaddr):
   print(child.before) 
   child.sendline("exit")
   print("logged out")
-getHostName("192.168.0.111")
+
+Addresses = ["192.168.0.111", "192.168.0.112", "192.168.0.121", "192.168.0.122"]
+for address in Addresses:
+  getHostName(address)
+

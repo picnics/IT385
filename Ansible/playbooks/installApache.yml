@@ -1,0 +1,8 @@
+---
+- name: install Apache webserver
+  hosts: web
+  tasks:
+    - name: install httpd
+      dnf:
+      name: httpd
+      state: latest  

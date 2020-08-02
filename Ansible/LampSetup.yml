@@ -1,0 +1,11 @@
+---
+- hosts: web
+  tasks:
+  - name: Install Apache
+    become: yes
+#    yum: name= 'httpd' state= present this is one way to do it 
+#    the below way is easier to read 
+    yum:
+      name: httpd 
+      state: present
+

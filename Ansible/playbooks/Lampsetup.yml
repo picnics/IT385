@@ -1,0 +1,57 @@
+---
+- hosts: all
+  tasks:
+  - name: Creating a User (egoad/RubberDuck!)
+    become: yes 
+    user: 
+      name: egoad
+      password: '$6$fLbFdc/WR9SjcuhB$lvOsV592q/LxHpMPw2mNiXt8ghCL0malZjwo9vVFcOeOgom4vvU2u7C75dcJls6jpawCfQwg/6EsklFs5W7LK.'    #this PW should work
+  - name: create second user
+    become: yes
+    user: 
+      name: logitech
+      password: "{{ 'Password01' | password_hash('sha512') }}"
+
+
+
+
+- hosts: db
+  tasks:
+  - name: Install MariaDB
+    become: yes
+    yum:
+      name: 'mariadb-server'
+      state: present
+  - name: Enable MariaDB (set to autostart)
+    become: yes
+    service:
+      name: 'mariadb'
+      enabled: yes
+  - name: start mariadb
+    become: yes
+    service:
+      name: 'mariadb'
+      state: started
+
+- hosts: web
+  tasks:
+  - name: Install Apache (httpd)
+    become: yes
+    yum: name='httpd' state=present 
+  - name: set Apache to run
+    become: yes
+    service: name='httpd' state=started enabled=yes
+  - name: Configure Firewall
+    become: yes
+    firewalld:
+      service: http
+      state: enabled
+      permanent: true
+    #notify:
+      - restart-firewall
+
+ # handlers:
+    #become: yes
+      #service:
+        #name: firewalld
+        #state: restarted

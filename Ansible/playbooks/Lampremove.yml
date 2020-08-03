@@ -1,0 +1,32 @@
+---
+- hosts: all
+  tasks:
+  - name: removing a User (egoad/RubberDuck!)
+    become: yes 
+    user: 
+      name: egoad
+      state: absent
+      remove: yes
+  - name: remove second user
+    become: yes
+    user: 
+      name: logitech
+      state: absent
+      remove: yes 
+      
+- hosts: db
+  tasks:
+  - name: remove MariaDB
+    become: yes
+    yum:
+      name: 'mariadb-server'
+      state: absent
+
+
+- hosts: web
+  tasks:
+  - name: Remove Apache (httpd)
+    become: yes
+    yum: 
+      name: httpd 
+      state: absent

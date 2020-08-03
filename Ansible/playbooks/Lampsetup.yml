@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-  - name: Creating a User (egoad/RubberDuck!)
+  - name: Creating 1st User (egoad/RubberDuck!)
     become: yes 
     user: 
       name: egoad

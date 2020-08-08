@@ -8,5 +8,5 @@
   - name: sample file for all systems 
     file: 
       dest: /tmp/ans/all-file
-      state: touch
+      state: '{{file_state}}' # this makes the  STATE to be CHANGEABLE :) instead of touch
   

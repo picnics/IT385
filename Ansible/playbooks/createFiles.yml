@@ -5,25 +5,14 @@
     file:
       dest: /tmp/ans
       state: directory
-  - name: sample file for all systems 
+  - name: create sample file for all systems 
     file: 
       dest: /tmp/ans/all-file
-      state: '{{file_state}}' # this makes the  STATE to be CHANGEABLE :) instead of touch
-- hosts: web
-  tasks:
-  - name: create web file on web machines 
+      state: touch
+    tags: create 
+  - name: create sample file for all systems 
     file: 
-      dest: /tmp/ans/web-file
-      state: '{{file_state}}'
-- hosts: web1
-  tasks:
-  - name: create only on web1
-    file:
-      dest: /tmp/ans/WEB1-file
-      state: '{{file_state}}'
-- hosts: all:!backup
-  tasks:
-  - name: create on all except backup
-    file: 
-      dest: /tmp/ans/not-backup-file
-      state: "{{file_state}}"
+      dest: /tmp/ans/all-file
+      state: absent
+    tags: remove
+    

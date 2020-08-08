@@ -5,8 +5,8 @@
     file:
       dest: /tmp/ans
       state: directory
-- name: sample file for all systems 
-  file: 
-    dest: /tmp/ans/all-file
-    state: touch
+  - name: sample file for all systems 
+    file: 
+      dest: /tmp/ans/all-file
+      state: touch
   

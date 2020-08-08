@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: Make folder under TMP directory
+    file:
+      dest: /tmp/ans
+      state: directory
+- name: sample file for all systems 
+  file: 
+    dest: /tmp/ans/all-file
+    state: touch
+  

@@ -1,13 +1,13 @@
 ---
-  - hosts: routers
-    gather_facts: false
-    connection: local #means runs script on ansible host opposed to on the router 
-    tasks:
-    - name: show run
-      ios_command:
-        commands: # everything under commands is ran on the cisco device 
-        - sh run
-      register: shrun #register,creates a variable
-    - name: Report Information
-      debug: #shows the output on the screen
-        var: shrun
+- hosts: routers
+  gather_facts: false
+  connection: local #means runs script on ansible host opposed to on the router 
+  tasks:
+  - name: show run
+    ios_command:
+      commands: # everything under commands is ran on the cisco device 
+      - sh run
+    register: shrun #register,creates a variable
+  - name: Report Information
+    debug: #shows the output on the screen
+      var: shrun

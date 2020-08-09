@@ -4,5 +4,5 @@
   connection: local
   tasks:
   - name: Update Hostname
-    ios_configure:
-      lines: hostname Michael
+    ios_config:
+      lines: hostname {{inventory_hostname}}

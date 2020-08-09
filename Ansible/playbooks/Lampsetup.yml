@@ -47,11 +47,11 @@
       service: http
       state: enabled
       permanent: true
-    #notify:
+    notify:
       - restart-firewall
 
- # handlers:
-    #become: yes
-      #service:
-        #name: firewalld
-        #state: restarted
+  handlers:
+    become: yes
+      service:
+        name: firewalld
+        state: restarted

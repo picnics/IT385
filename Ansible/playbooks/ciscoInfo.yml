@@ -9,5 +9,5 @@
         - sh run
       register: shrun #register,creates a variable
     - name: Report Information
-      debug:
+      debug: #shows the output on the screen
         var: shrun

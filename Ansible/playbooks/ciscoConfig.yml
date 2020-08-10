@@ -19,14 +19,17 @@
         WARNING, UNAUTHORIZED
         ACCESS IS PROHIBITED!
       state: present 
-  - name: configure static ip route 
-    ios_static_route:
-      prefix: 0.0.0.0
-      mask: 0.0.0.0
-      interface: s0/0
+  #- name: configure static ip route 
+    #ios_static_route:
+      #prefix: 0.0.0.0
+      #mask: 0.0.0.0
+      #interface: s0/0
   -name: configuring min-10 character password creation length 
    ios_config:
      lines: security passwords min-length 10
+  - name: configure login block for 3 min
+    ios_config: 
+      lines: login block-for 180 attemps 4 within 120
 
 
     

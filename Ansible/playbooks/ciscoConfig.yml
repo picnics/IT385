@@ -1,0 +1,16 @@
+---
+- hosts: routers 
+  gather_facts: false
+  connection: local
+  tasks:
+  - name: Update Hostname
+    ios_config:
+      lines: hostname {{inventory_hostname}}
+  - name: enable Exec secret Password
+    ios_config:
+      lines: enable secret Ciscoenpa55
+  - name:
+    ios_config:
+      lines: no ip domain-lookup
+
+    

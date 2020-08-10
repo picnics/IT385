@@ -24,12 +24,25 @@
       #prefix: 0.0.0.0
       #mask: 0.0.0.0
       #interface: s0/0
-  -name: configuring min-10 character password creation length 
-   ios_config:
+  - name: configuring min-10 character password creation length 
+    ios_config:
      lines: security passwords min-length 10
+  - name: configure console password and enable login
+    ios_command:
+      commands:
+        - line con 0
+        - password Ciscoconpa55
+        - login
+        - exec-timeout 5
+        - end
+        - line vty 0 4
+        - password Ciscoconpa55
+        - login
+        - exec-timeout 5
+        - end 
   - name: configure login block for 3 min
     ios_config: 
       lines: login block-for 180 attemps 4 within 120
-
+  
 
     

@@ -1,0 +1,9 @@
+---
+- hosts: routers 
+  gather_facts: false
+  connection: local
+  tasks:
+  - name: Update Hostname
+    ios_config:
+      lines: hostname 
+  - name: vty lines password setup

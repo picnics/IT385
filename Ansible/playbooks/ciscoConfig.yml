@@ -26,7 +26,7 @@
       #interface: s0/0
   - name: configuring min-10 character password creation length 
     ios_config:
-     lines: security passwords min-length 10
+      lines: security passwords min-length 10
   - name: configure console password and enable login
     ios_command:
       commands:

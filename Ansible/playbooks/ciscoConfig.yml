@@ -5,12 +5,28 @@
   tasks:
   - name: Update Hostname
     ios_config:
-      lines: hostname {{inventory_hostname}}
-  - name: enable Exec secret Password
-    ios_config:
-      lines: enable secret Ciscoenpa55
-  - name:
+      lines: hostname lab8
+  #- name: enable Exec secret Password
+    #ios_config:
+      #lines: enable secret Ciscoenpa55
+  - name: disable dns lookup 
     ios_config:
       lines: no ip domain-lookup
+  - name: Creating Banner MOTD
+    ios_banner:
+      banner: login
+      text: |
+        WARNING, UNAUTHORIZED
+        ACCESS IS PROHIBITED!
+      state: present 
+  - name: configure static ip route 
+    ios_static_route:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+      interface: s0/0
+  -name: configuring min-10 character password creation length 
+   ios_config:
+     lines: security passwords min-length 10
+
 
     

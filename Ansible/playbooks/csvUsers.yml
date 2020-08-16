@@ -1,0 +1,39 @@
+---
+- hosts: web
+  become: true
+  tasks:
+  - name: read the CSV file
+    read_csv:
+      path: ./users.csv
+      key: name
+    register: users
+    delegate_to: localhost # this will read the contents of the file and sent it out
+
+  #- name: Debug users 
+  #  debug: 
+  #    msg: "{{ users }}"
+  #- name: show users dictionary
+  #  debug: 
+  #    msg: "{{users.dict}}"
+  #- name: Show users Dictionary Values
+  #  debug: 
+  #    msg: "{{ users.dict.values() }}"
+  #- name: Show users as a LIST
+  #  debug: 
+  #    msg: "{{ users.dict.values() | list }}"
+  #- name: Print username and Password
+  #  debug:
+  #    msg: "{{ item.name }} -- {{ item.password }}"
+  #  loop: "{{ users.dict.values() | list }}"
+  - name: create users 
+    user:
+      name: "{{ item.name }}"
+      password: "{{ item.password | password_hash('sha512') }}"
+      state: present 
+    loop: "{{ users.dict.values() | list }}"
+
+
+
+
+
+

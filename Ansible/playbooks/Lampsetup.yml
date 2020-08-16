@@ -51,6 +51,7 @@
       - restart-firewall
 
   handlers:
+  - name: Restart-firewall
     become: yes
       service:
         name: firewalld

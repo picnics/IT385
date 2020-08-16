@@ -1,0 +1,16 @@
+---
+# tasks for installing apache role 
+- name: Install Apache (httpd)
+  become: yes
+  yum: name='httpd' state=present 
+- name: set Apache to run
+  become: yes
+  service: name='httpd' state=started enabled=yes
+- name: Configure Firewall
+  become: yes
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+notify:
+  - restart-firewall

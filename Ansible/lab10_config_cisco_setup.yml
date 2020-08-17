@@ -1,0 +1,12 @@
+---
+#lab 10 tasks 
+- hosts: routers 
+  gather_facts: false
+  connection: local
+  roles:
+   - config_snmpv2_community_string
+   - config_NTP_cisco_router
+   - cisco_default_route
+   - cisco_consolePW
+
+

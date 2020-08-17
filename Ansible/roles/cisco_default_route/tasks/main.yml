@@ -1,0 +1,9 @@
+---
+# configuring the default route
+- name: configuring default route 
+  ios_command:
+    commands:
+     - enable
+     - conf t
+     - ip route 0.0.0.0 0.0.0.0 192.168.0.250
+     - exit

@@ -1,0 +1,11 @@
+---
+#login password config
+- name: setting local pw
+  ios_command:
+    commands:
+     - enable 
+     - conf t
+     - line console 0
+     - password GRCCon
+     - local login
+     - exit

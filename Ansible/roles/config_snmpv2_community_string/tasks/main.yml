@@ -1,0 +1,9 @@
+---
+#tasks for Configuring the community string for SNMPv2
+- name: set community string for SNMPv2
+  ios_command:
+    commands: 
+      - enable
+      - conf t
+      - snmp-server community GRCRocks! RW
+      - exit
